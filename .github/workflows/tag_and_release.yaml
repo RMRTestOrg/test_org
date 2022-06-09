@@ -22,6 +22,7 @@ on:
 
 jobs:
   release:
-    uses: ./.github/workflows/tag_and_release_master.yaml@main
-      secrets:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    #uses: .github/.github/workflows/tag_and_release_master.yaml@main
+    uses: ./.github/workflows/tag_and_release_master.yaml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
