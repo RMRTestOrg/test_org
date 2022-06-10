@@ -38,6 +38,8 @@ jobs:
       - name: Update VERSION.txt
         run: |
           echo "${{ steps.bumpr.outputs.next_version }}" > VERSION.txt
+          cwd
+          whoami
           cat VERSION.txt
       - name: Push VERSION.txt
         uses: EndBug/add-and-commit@v4
