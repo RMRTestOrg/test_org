@@ -35,12 +35,15 @@ jobs:
           github_token: ${{ secrets.token }}
           tag_as_user: cmakepp[bot]
           tag_as_email: cmakepp[bot]@github.com
+
       - name: Update VERSION.txt
         run: |
           echo "${{ steps.bumpr.outputs.next_version }}" > VERSION.txt
+          ls -a
           pwd
           whoami
           cat VERSION.txt
+
       - name: Push VERSION.txt
         uses: EndBug/add-and-commit@v4
         with:
