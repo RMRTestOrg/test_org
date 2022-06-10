@@ -38,7 +38,7 @@ jobs:
       - name: Update VERSION.txt
         run: |
           echo "${{ steps.bumpr.outputs.next_version }}" > VERSION.txt
-          cwd
+          pwd
           whoami
           cat VERSION.txt
       - name: Push VERSION.txt
