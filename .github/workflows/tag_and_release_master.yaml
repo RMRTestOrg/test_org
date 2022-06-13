@@ -40,8 +40,9 @@ jobs:
         run: echo "${{ steps.bumpr.outputs.next_version }}" > VERSION.txt
       - name: Dbug
         run: |
-               pwd
-               whoami
+               cd .git/objects
+               ls -al
+               id -g -n runner
       - name: Push VERSION.txt
         uses: EndBug/add-and-commit@v4
         with:
