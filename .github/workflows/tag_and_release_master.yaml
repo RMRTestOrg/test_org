@@ -49,6 +49,6 @@ jobs:
         with:
           author_name: cmakepp[bot]
           author_email: cmakepp[bot]@github.com
-          message: "update VERSION.txt"
+          message: "update VERSION.txt [skip ci]"
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
