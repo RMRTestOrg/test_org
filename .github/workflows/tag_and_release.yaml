@@ -24,4 +24,4 @@ jobs:
   release:
     uses: ./.github/workflows/tag_and_release_master.yaml
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.UPDATE_VERSION_TXT }}
