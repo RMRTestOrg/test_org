@@ -47,7 +47,7 @@ jobs:
       - name: Push VERSION.txt
         uses: EndBug/add-and-commit@v4
         with:
-          author_name: cmakepp[bot]
+          author_name: ryanmrichard
           author_email: cmakepp[bot]@github.com
           message: "update VERSION.txt [skip ci]"
         env:
