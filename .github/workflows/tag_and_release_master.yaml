@@ -43,6 +43,7 @@ jobs:
                cd .git/objects
                ls -al
                id -g -n runner
+               pwd
       - name: Push VERSION.txt
         uses: EndBug/add-and-commit@v4
         with:
