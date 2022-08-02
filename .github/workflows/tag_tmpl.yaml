@@ -50,4 +50,12 @@ jobs:
           dry_run: true
       - name: set_outputs
         run: |
-          echo ${{ steps.bumpr.outputs.current_version }}
+          current_version=${{ steps.bumpr.outputs.current_version }}
+          next_version=${{ steps.bumpr.outputs.next_version }}
+          current_major="$(echo ${current_version} | cut -d'.' -f1)"
+          next_major="$(echo ${next_version} | cut -d'.' -f1)"
+          current_minor="$(echo ${current_version} | cut -d'.' -f2)"
+          next_minor="$(echo ${next_version} | cut -d'.' -f2)"
+          echo "${current_version} ${next_version}"
+          echo "${current_major} ${next_major}"
+          echo "${current_minor} ${next_minor}"
