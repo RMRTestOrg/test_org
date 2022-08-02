@@ -34,8 +34,8 @@ jobs:
   update_version:
     runs-on: ubuntu-latest
     outputs:
-      bumped_major: false
-      bumped_minor: false
+      bumped_major: ${{ steps.compute_output.outputs.bumped_major }}
+      bumped_minor: ${{ steps.compute_output.outputs.bumped_minor }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -48,14 +48,19 @@ jobs:
           tag_as_user: cmakepp[bot]
           tag_as_email: cmakepp[bot]@github.com
           dry_run: true
-      - name: set_outputs
+      - id: compute_output
         run: |
           current_version=${{ steps.bumpr.outputs.current_version }}
           next_version=${{ steps.bumpr.outputs.next_version }}
           current_major="$(echo ${current_version} | cut -d'.' -f1)"
           next_major="$(echo ${next_version} | cut -d'.' -f1)"
-          current_minor="$(echo ${current_version} | cut -d'.' -f2)"
-          next_minor="$(echo ${next_version} | cut -d'.' -f2)"
-          echo "${current_version} ${next_version}"
-          echo "${current_major} ${next_major}"
-          echo "${current_minor} ${next_minor}"
+          if [[ "${current_major}"" == "${next_major}" ]]; then
+            echo ":set-output name=bumped_major::false"
+          else
+            echo ":set-output name=bumped_major::true"
+          fi
+          if [[ "${current_minor}"" == "${next_minor}" ]]; then
+            echo ":set-output name=bumped_minor::false"
+          else
+            echo ":set-output name=bumped_minor::true"
+          fi
