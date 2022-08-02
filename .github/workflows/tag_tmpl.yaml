@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       bumped_major: ${{ steps.compute_output.outputs.bumped_major }}
-      bumped_minor: ${{ steps.compute_output.outputs.bumped_minor }}
+      bumped_minor: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -59,8 +59,8 @@ jobs:
           else
             echo ":set-output name=bumped_major::true"
           fi
-          if [[ "${current_minor}" == "${next_minor}" ]]; then
-            echo ":set-output name=bumped_minor::false"
-          else
-            echo ":set-output name=bumped_minor::true"
-          fi
+          #if [[ "${current_minor}" == "${next_minor}" ]]; then
+          #  echo ":set-output name=bumped_minor::false"
+          #else
+          #  echo ":set-output name=bumped_minor::true"
+          #fi
