@@ -14,7 +14,7 @@
 #
 name: Tag and Release
 
-# TODO: for prudction this should be:
+# TODO: for production this should be:
 #on:
 #  push:
 #    branches:
