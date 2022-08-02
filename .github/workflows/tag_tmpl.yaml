@@ -54,12 +54,12 @@ jobs:
           next_version=${{ steps.bumpr.outputs.next_version }}
           current_major="$(echo ${current_version} | cut -d'.' -f1)"
           next_major="$(echo ${next_version} | cut -d'.' -f1)"
-          if [[ "${current_major}"" == "${next_major}" ]]; then
+          if [[ "${current_major}" == "${next_major}" ]]; then
             echo ":set-output name=bumped_major::false"
           else
             echo ":set-output name=bumped_major::true"
           fi
-          if [[ "${current_minor}"" == "${next_minor}" ]]; then
+          if [[ "${current_minor}" == "${next_minor}" ]]; then
             echo ":set-output name=bumped_minor::false"
           else
             echo ":set-output name=bumped_minor::true"
