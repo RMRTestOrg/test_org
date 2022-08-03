@@ -68,5 +68,3 @@ jobs:
             echo "Bumped minor: true"
             echo "::set-output name=bumped_minor::true"
           fi
-      - name: Print Git Tag
-        run: git describe --tags --abbrev=0
