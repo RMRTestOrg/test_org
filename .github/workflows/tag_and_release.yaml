@@ -27,7 +27,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: tag
-    if: ${{ (needs.tag.outputs.bumped_major == true) || (needs.tag.outputs.bumped_minor == true) }}
+    if: ${{ needs.tag.outputs.bumped_major == true || needs.tag.outputs.bumped_minor == true }}
     steps:
       - run: echo "${{ needs.tag.outputs.bumped_major }}"
       - run: echo "${{ needs.tag.outputs.bumped_minor }}"
