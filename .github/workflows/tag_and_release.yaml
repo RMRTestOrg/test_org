@@ -31,11 +31,10 @@ jobs:
       (needs.tag.outputs.bumped_major == 'true') || 
       (needs.tag.outputs.bumped_minor == 'true')
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Install build package
         run: python -m pip install build --user
-      - run: pwd
-      - run: ls ..
-      - run: ls
       - name: Build binary wheel and source tarball
         run: python -m build --sdist --wheel --outdir dist/
       - name: Publish to PyPI
