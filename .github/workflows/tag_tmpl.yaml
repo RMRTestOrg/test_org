@@ -52,6 +52,7 @@ jobs:
           next_version=${{ steps.bumpr.outputs.next_version }}
           current_major="$(echo ${current_version} | cut -d'.' -f1)"
           next_major="$(echo ${next_version} | cut -d'.' -f1)"
+          echo "${current_version} -> ${next_version}"
           if [[ "${current_major}" == "${next_major}" ]]; then
             echo "Bumped major: false"
             echo "::set-output name=bumped_major::false"
