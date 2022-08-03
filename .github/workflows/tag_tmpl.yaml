@@ -45,6 +45,7 @@ jobs:
           github_token: ${{ secrets.token }}
           tag_as_user: cmakepp[bot]
           tag_as_email: cmakepp[bot]@github.com
+          dry_run: true
       - id: compute_output
         run: |
           current_version=${{ steps.bumpr.outputs.current_version }}
