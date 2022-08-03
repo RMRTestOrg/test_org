@@ -31,19 +31,11 @@ jobs:
       (needs.tag.outputs.bumped_major == 'true') || 
       (needs.tag.outputs.bumped_minor == 'true')
     steps:
-      - name: Install package
-        run: >-
-          python -m 
-          pip install
-          build
-          --user
+      - name: Install build package
+        run: python -m pip install build --user
+      - run: ls
       - name: Build binary wheel and source tarball
-        run: >-
-          python -m
-          build
-          --sdist
-          --wheel
-          --outdir dist/
+        run: python -m build --sdist --wheel --outdir dist/
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
