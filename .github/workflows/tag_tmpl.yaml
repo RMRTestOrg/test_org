@@ -52,14 +52,18 @@ jobs:
           current_major="$(echo ${current_version} | cut -d'.' -f1)"
           next_major="$(echo ${next_version} | cut -d'.' -f1)"
           if [[ "${current_major}" == "${next_major}" ]]; then
+            echo "Bumped major: false"
             echo "::set-output name=bumped_major::false"
           else
+            echo "Bumped major: true"
             echo "::set-output name=bumped_major::true"
           fi
           current_minor="$(echo ${current_version} | cut -d'.' -f2)"
           next_minor="$(echo ${next_version} | cut -d'.' -f2)"
           if [[ "${current_minor}" == "${next_minor}" ]]; then
+            echo "Bumped minor: false"
             echo "::set-output name=bumped_minor::false"
           else
+            echo "Bumped minor: true"
             echo "::set-output name=bumped_minor::true"
           fi
