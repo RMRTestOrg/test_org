@@ -31,5 +31,5 @@ jobs:
     steps:
       - run: echo "${{ needs.tag.outputs.bumped_major }}"
       - run: echo "${{ needs.tag.outputs.bumped_minor }}"
-      - run: echo "Hello World"
+      - run: echo "Hello  World"
 
