@@ -30,6 +30,6 @@ jobs:
       (needs.tag.outputs.bumped_major == 'true') || 
       (needs.tag.outputs.bumped_minor == 'true')
     uses: ./.github/workflows/pypi_release_tmpl.yaml
-    with:
+    secrets:
       token: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
