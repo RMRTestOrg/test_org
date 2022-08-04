@@ -36,6 +36,6 @@ jobs:
         run: twine check dist/*
       - name: Test built package
         run: |
-          pip install dist/cminx-*.tar.gz
+          pip install dist/*.tar.gz
           cd tests
           python -B test_all.py  
