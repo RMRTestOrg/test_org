@@ -32,5 +32,10 @@ jobs:
         run: python -m pip install build twine --user
       - name: Build binary wheel and source tarball
         run: python -m build --sdist --wheel --outdir dist/
-      - name: Test Produced Files
-        run: twine check
+      - name: Test Long Description
+        run: twine check dist/*
+      - name: Test built package
+        run: |
+          pip install dist/cminx-*.tar.gz
+          cd tests
+          python -B test_all.py  
