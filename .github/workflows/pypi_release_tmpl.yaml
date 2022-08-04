@@ -13,31 +13,29 @@
 # limitations under the License.
 #
 
-name: Release to PyPI
+name: PyPI Release
 
 on:
-  workflow_call:
+  workflow_call:    
     secrets:
       token:
+        description: "API Token to use for PyPI authentication."
         required: true
-
+      
 jobs:
-  release:
+  test_release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Get the tags
         run: git fetch --all --tags
-      - name: Print Git Tag
-        run: git describe --tags --abbrev=0
-      - name: Install build package
+      - name: Install Python's "build" package
         run: python -m pip install build --user
       - name: Build binary wheel and source tarball
         run: python -m build --sdist --wheel --outdir dist/
-      - name: Publish to PyPI
+      - name: Publish to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.token }}
           repository_url: https://test.pypi.org/legacy/
-
